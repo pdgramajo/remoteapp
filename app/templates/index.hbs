@@ -1,0 +1,18 @@
+     <form>
+        {{#each model.questions as |q|}}         
+            <div class="form-group">
+                <label for="exampleInputPassword1"> {{q.text}}={{q.type}}</label>
+                    {{#if (equals q.type 'checkbox') }}
+                        {{input type="checkbox"}}            
+                    {{/if}}
+
+                    {{#if (equals q.type 'radio')}}
+                        {{input type="radio"}}            
+                    {{/if}}
+
+                    {{#if (equals q.type 'select')}}
+                        {{input type="select" class="form-control"}}            
+                    {{/if}}
+             </div>
+        {{/each}}
+      </form> 
