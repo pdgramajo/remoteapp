@@ -16,3 +16,6 @@
              </div>
         {{/each}}
       </form> 
+{{#each model as |person|}}
+<div class="alert alert-success" role="alert">{{person.name}}</div>
+{{/each}}
