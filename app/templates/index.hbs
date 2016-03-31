@@ -1,21 +1,19 @@
      <form>
         {{#each model.questions as |q|}}         
-            <div class="form-group">
-                <label for="exampleInputPassword1"> {{q.text}}={{q.type}}</label>
+            <div class="form-group">              
                     {{#if (equals q.type 'checkbox') }}
-                        {{input type="checkbox"}}            
+                        <label for="exampleInputPassword1"> {{q.text}} ?</label>
+                        <ul>
+                            {{#each q.answers as |answer|}}
+                                 <li>{{input type="radio"}} - {{answer.text}} </li>
+                            {{/each}}
+                    
+                        </ul>
                     {{/if}}
 
-                    {{#if (equals q.type 'radio')}}
-                        {{input type="radio"}}            
-                    {{/if}}
-
-                    {{#if (equals q.type 'select')}}
-                        {{input type="select" class="form-control"}}            
+                    {{#if (equals q.type 'input')}}
+                       <label>{{q.text}}?</label> {{input type="input"}}                                                    
                     {{/if}}
              </div>
         {{/each}}
       </form> 
-{{#each model.people as |person|}}
-<div class="alert alert-success" role="alert">{{person.name}}</div>
-{{/each}}
