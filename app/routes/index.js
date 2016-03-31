@@ -13,9 +13,7 @@ export default Ember.Route.extend({
                 cache: false,
                 async:false,          
                 success: function(response){                  
-                    resolve(response);
-                    console.log('+++++++++++++++    '+'RESPONSE'+'   +++++++++++++++');
-                    console.log(response);           
+                    resolve(response);       
                 }           ,
                 error:function(error){
                     reject(error);
@@ -23,7 +21,7 @@ export default Ember.Route.extend({
             }); 
         });
     
-
+        this.store.findAll('person');
         return promise.then(function(data){return data;}, function(error){return null;});
   },
    afterModel:function(){
