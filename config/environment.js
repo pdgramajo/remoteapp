@@ -30,7 +30,7 @@ module.exports = function(environment) {
     'default-src': "'none'",
     'script-src': "'self'",
     'font-src': "'self'",
-    'connect-src': "'self' http://localhost:54538",
+    'connect-src': "'self' http://localhost:54538 ",
     'img-src': "'self'",
     'style-src': "'self'",
     'media-src': "'self'"

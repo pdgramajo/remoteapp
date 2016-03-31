@@ -1,32 +1,26 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    otro:'',
+    ajax: Ember.inject.service(),//hay que agegar esto para usar el ajax
     model:function(){
         var self = this;
+   
+        //this.store.findAll('person');
+        
+        /*********
+        
+           ******* para  leer la documentacion ver https://www.npmjs.com/package/ember-ajax  *********
 
-        var promise = new Ember.RSVP.Promise(function(resolve,reject){
-            $.ajax({
-                url: 'http://localhost:54538/api/people', 
-                type: "GET",      
+        **********/
 
-                cache: false,
-                async:false,          
-                success: function(response){                  
-                    resolve(response);       
-                }           ,
-                error:function(error){
-                    reject(error);
-                }
-            }); 
-        });
-    
-        this.store.findAll('person');
-        return promise.then(function(data){return data;}, function(error){return null;});
+        return this.get('ajax').request('http://localhost:54538/api/people');//puedo o no usar el then como lo hago en el codigo comentado abajo
+
+        //return this.get('ajax').request('http://localhost:54538/api/people').then(function(response){
+        //    console.log('+++++++++++++++    '+'RESPONSE'+'   +++++++++++++++');
+        //    console.log(response);
+        //    return response;
+        //});
   },
-   afterModel:function(){
-       console.log('modelo: ',this.get('controllers.model'));
-   },
   actions: {
     answerSupplied: function(a, q, obj){
       console.log(q+':'+a);
