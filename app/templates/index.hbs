@@ -1,4 +1,4 @@
-     <form>
+     <form {{action 'save' on='submit'}}>
         {{#each model.questions as |q|}}         
             <div class="form-group">              
                     {{#if (equals q.type 'checkbox') }}
@@ -16,4 +16,30 @@
                     {{/if}}
              </div>
         {{/each}}
+
+         <button type="submit">aceptar</button>
+
       </form> 
+
+                <form {{action "saveperson" on="submit"}}>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
+                        {{input type="text"  class="form-control" value=name placeholder="Name"}}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                       <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+                        {{input type="text"  class="form-control" value=last_name placeholder="Last Name"}}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+                        {{input type="number"  class="form-control" value=age placeholder="Age"}}
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+<div class="alert alert-success" role="alert">fcghnxfg</div>
+<div class="alert alert-info" role="alert">dfgdfgdfg</div>
+<div class="alert alert-warning" role="alert">123123123</div>
+<div class="alert alert-danger" role="alert">6786789678</div>

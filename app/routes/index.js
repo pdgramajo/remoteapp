@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 
         **********/
 
-        return this.get('ajax').request('http://localhost:54538/api/people');//puedo o no usar el then como lo hago en el codigo comentado abajo
+        return this.get('ajax').request('people');//puedo o no usar el then como lo hago en el codigo comentado abajo
 
         //return this.get('ajax').request('http://localhost:54538/api/people').then(function(response){
         //    console.log('+++++++++++++++    '+'RESPONSE'+'   +++++++++++++++');
@@ -22,9 +22,10 @@ export default Ember.Route.extend({
         //});
   },
   actions: {
-    answerSupplied: function(a, q, obj){
-      console.log(q+':'+a);
-    }
+      save: function(){
+          console.log('++++++++++   response :',this.get('model.questions'));
+      },
+
   }
 });
 var questions = [
