@@ -4,15 +4,15 @@
                     {{#if (equals q.type 'checkbox') }}
                         <label for="exampleInputPassword1"> {{q.text}} ?</label>
                         <ul>
-                            {{#each q.answers as |answer|}}
-                                 <li>{{input type="radio"}} - {{answer.text}} </li>
+                            {{#each q.answers as |answer index2|}}
+                                 <li>{{input type="radio" name=(checkbox-group q.id) id=(field-id q.fieldId index2)}} - {{answer.text}}</li>
                             {{/each}}
                     
                         </ul>
                     {{/if}}
 
                     {{#if (equals q.type 'input')}}
-                       <label>{{q.text}}?</label> {{input type="input"}}                                                    
+                       <label>{{q.text}}?</label> {{input type="input"  id=(field-id q.fieldId 0)}}                                                    
                     {{/if}}
              </div>
         {{/each}}

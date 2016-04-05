@@ -2,6 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     ajax: Ember.inject.service(),//hay que agegar esto para usar el ajax
+    id: Ember.computed('model.questions.fieldId',function(index,value){
+        console.log('++++++++++   index :',index);
+        console.log('++++++++++   value :',value);
+    }),
     actions: {
 
         saveperson:function(){         
