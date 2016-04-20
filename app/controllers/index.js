@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     }),
     actions: {
 
-        saveperson:function(){         
+        saveperson:function(){
             var self = this;
             this.get('ajax').request('people/otroname', {
                 method: 'POST',
@@ -22,9 +22,21 @@ export default Ember.Controller.extend({
                 self.set('name','');
                 self.set('last_name','');
                 self.set('age','');
-          
+
             });
 
+        },
+        save(){
+            var self = this;
+            let list = $('#myform').serializeArray();
+            var respuestas=Ember.A();
+            jQuery.each(list, function(index, val) {
+              var res = val.name.split("_");
+              var x = self.get('model.questions').findBy('id',parseInt(res[1]));
+              respuestas.pushObject({id:parseInt(res[1]),respuesta:val.value});
+          });
+
+            console.log('**** respuestas - ',respuestas);
         }
     }
 });

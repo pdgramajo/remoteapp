@@ -1,45 +1,25 @@
-     <form {{action 'save' on='submit'}}>
-        {{#each model.questions as |q|}}         
-            <div class="form-group">              
-                    {{#if (equals q.type 'checkbox') }}
-                        <label for="exampleInputPassword1"> {{q.text}} ?</label>
-                        <ul>
-                            {{#each q.answers as |answer index2|}}
-                                 <li>{{input type="radio" name=(checkbox-group q.id) id=(field-id q.fieldId index2)}} - {{answer.text}}</li>
-                            {{/each}}
-                    
-                        </ul>
-                    {{/if}}
+     <form class="form-horizontal" {{action 'save' on='submit'}} id="myform">
+        {{#each model.questions as |q|}}    
+        {{#if (equals q.type 'checkbox') }}
+        <label for="exampleInputPassword1"> {{q.text}} ?</label>
+        {{#each q.answers as |answer index2|}}
+        <div class="checkbox">
+            <label>
+               {{input type="radio" name=(checkbox-group q.id) id=(field-id q.fieldId index2) value=(field-id q.fieldId index2)}} 
+               {{answer.text}}
+           </label>
+       </div>
+       {{/each}}
+       {{/if}}
 
-                    {{#if (equals q.type 'input')}}
-                       <label>{{q.text}}?</label> {{input type="input"  id=(field-id q.fieldId 0)}}                                                    
-                    {{/if}}
-             </div>
-        {{/each}}
+       {{#if (equals q.type 'input')}}
+       <label for="exampleInputEmail1">{{q.text}}?</label>
+       <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
+       {{input type="input" class="form-control" name=(field-id q.fieldId 0) id=(field-id q.fieldId 0)}}
+       {{!input type="text"  class="form-control" value=name placeholder="Name"}}
+       {{/if}}
+       {{/each}}
 
-         <button type="submit">aceptar</button>
+       <button type="submit">aceptar</button>
 
-      </form> 
-
-                <form {{action "saveperson" on="submit"}}>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
-                        {{input type="text"  class="form-control" value=name placeholder="Name"}}
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                       <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-                        {{input type="text"  class="form-control" value=last_name placeholder="Last Name"}}
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-                        {{input type="number"  class="form-control" value=age placeholder="Age"}}
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-<div class="alert alert-success" role="alert">fcghnxfg</div>
-<div class="alert alert-info" role="alert">dfgdfgdfg</div>
-<div class="alert alert-warning" role="alert">123123123</div>
-<div class="alert alert-danger" role="alert">6786789678</div>
+   </form> 
